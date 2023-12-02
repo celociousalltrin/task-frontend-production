@@ -1,0 +1,35 @@
+.signup-container {
+  display: grid;
+  height: 100vh;
+}
+
+.center-signup-content {
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f8f8f7;
+}
+
+.signup-tab-container > li > button {
+  font-size: large;
+
+  color: black;
+}
+
+.signup-tab-container > li > button:hover {
+  font-size: large;
+  color: black;
+}
+
+@media (max-width: 767px) {
+  .center-signup-content {
+    width: 80%;
+  }
+}
+
+@media (min-width: 768px) {
+  .center-signup-content {
+    width: 50%;
+  }
+}

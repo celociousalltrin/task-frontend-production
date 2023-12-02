@@ -1,0 +1,147 @@
+.signup-edit-prof__camicon1 {
+  color: white;
+  background-color: #000;
+  opacity: 0.5;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.signup-edit-prof-img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.signup-edit-prof {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.interest-single-container {
+  height: 70%;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.interest-single-container:hover {
+  border: 1.5px solid blue;
+}
+
+.interset-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.interest-selected-count {
+  padding-top: 0.6rem;
+  position: sticky;
+  top: -8%;
+  background-color: whitesmoke;
+}
+
+.signup-select {
+  width: 80%;
+  text-align: left;
+}
+
+.signup-date-picker {
+  width: 80%;
+  margin-right: 39%;
+  border-radius: 7px;
+  padding: 5px;
+  border: 1px solid #e2e1e0;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-tel-input .form-control {
+  padding: 0.3rem 3rem !important;
+  width: 80% !important;
+}
+
+.signup-user-name {
+  text-align: start;
+  margin: 0.2rem 0 0 0;
+  padding: 0;
+}
+
+.invalid-feedback {
+  text-align: left;
+}
+
+@media (max-width: 767px) {
+  .signup-date-picker {
+    width: 100%;
+  }
+
+  .signup-select {
+    width: 100%;
+  }
+
+  .react-tel-input .form-control {
+    width: 100% !important;
+  }
+
+  .signup-user-info-container > div:not(:first-child) {
+    margin-top: 1.3rem;
+  }
+
+  .signup-user-info-container > div > label {
+    display: block;
+    text-align: start;
+    margin-left: 0.3rem;
+  }
+
+  .signup-user-info-container > div > input {
+    width: 100%;
+  }
+
+  .content-expand-icon {
+    position: absolute;
+    top: 2%;
+    right: 0%;
+    color: rgb(13, 110, 253);
+  }
+  .content-expand-interest-icon {
+    position: absolute;
+    top: 38%;
+    right: -1%;
+    color: rgb(13, 110, 253);
+  }
+  .or-icon {
+    position: absolute;
+    padding: 0rem 0.7rem;
+    top: 71%;
+    right: 40%;
+    background-color: rgb(245, 245, 245);
+  }
+}
+
+@media (min-width: 768px) {
+  .signup-user-info-container > div:not(:nth-child(-n + 2)) {
+    margin-top: 1.3rem;
+  }
+
+  .signup-user-info-container > div > label {
+    display: block;
+    text-align: start;
+    margin-left: 0.3rem;
+  }
+
+  .signup-user-info-container > div > input {
+    width: 80%;
+  }
+
+  .or-icon {
+    position: absolute;
+    padding: 0rem 0.7rem;
+    top: 71%;
+    right: 50%;
+    background-color: rgb(245, 245, 245);
+  }
+}

@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+.page-container {
+  display: grid;
+}
+
+.center-Page-content {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f8f8f7;
+  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+  word-wrap: break-word;
+  padding: 20px;
+}
+
+@media (max-width: 767px) {
+  .center-Page-content {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 768px) {
+  .center-Page-content {
+    max-width: 60%;
+  }
+}

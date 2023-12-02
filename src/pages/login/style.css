@@ -1,0 +1,36 @@
+.login-container {
+  display: grid;
+  height: 100vh;
+}
+
+.center-login-content {
+  margin: auto;
+  width: 30%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f8f8f7;
+}
+
+.login-tab-container > li > button {
+  font-size: large;
+
+  color: black;
+}
+
+.login-tab-container > li > button:hover {
+  font-size: large;
+  color: black;
+}
+
+@media (max-width: 767px) {
+  .center-login-content {
+    width: 80%;
+  }
+}
+
+@media (min-width: 768px) {
+  .center-login-content {
+    width: 32%;
+  }
+}

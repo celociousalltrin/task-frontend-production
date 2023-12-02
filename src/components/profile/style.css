@@ -1,0 +1,18 @@
+@media (max-width: 767px) {
+  .profile_img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+  }
+}
+@media (min-width: 768px) {
+  .profile_img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+  }
+}

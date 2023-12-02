@@ -1,0 +1,13 @@
+@media (min-width: 992px) {
+  .login-input-container {
+    margin-left: 22%;
+    width: 60%;
+  }
+}
+
+@media (max-width: 991px) {
+  .login-input-container {
+    margin-left: 5%;
+    width: 90%;
+  }
+}
