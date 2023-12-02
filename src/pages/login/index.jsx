@@ -12,13 +12,6 @@ import toast from "react-hot-toast";
 const LoginPage = () => {
   const [activeTab, setActiveTab] = useState("user-login");
 
-  useEffect(() => {
-    toast(
-      "I deployed the backend under a trial render account, hence the backend deployed in render does not always run because of the free render account. Please refresh the page.",
-      { duration: 15000 }
-    );
-  }, []);
-
   return (
     <div className="login-container">
       <div className="center-login-content">
