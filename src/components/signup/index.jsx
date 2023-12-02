@@ -21,10 +21,10 @@ import { staticResponseMessage } from "../../utils/static-response-message";
 
 const Signup = ({ activeTab, api, isUserProfile }) => {
   const [isCreating, setIsCreating] = useState(false);
-  const [isVerified, setIsVerified] = useState(true);
+  const [isVerified, setIsVerified] = useState(false);
   const init = {
     name: "",
-    email: "demo2@gmail.com",
+    email: "",
     password: "",
     phone_number: "",
     ...(isUserProfile && { image_uri: "" }),
