@@ -1,14 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavDropdown } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useNavigate } from "react-router-dom";
-import { FaSignOutAlt, FaHome } from "react-icons/fa";
+import { FaSignOutAlt, FaHome, FaUser, FaUsers } from "react-icons/fa";
+import { MdNotifications } from "react-icons/md";
+
+import "./style.css";
+import { connectSocket } from "../../services/socket-utils";
+import { getNotificationCount } from "../../services/socket-methods";
 
 const Header = () => {
   const navigate = useNavigate();
   const userData = JSON.parse(localStorage.getItem("user_data"));
+  const [notificationCount, setNotificationCount] = useState(0);
+
+  const handleUpdateNotificationCount = (data) => {
+    setNotificationCount(data);
+    localStorage.setItem("count", data);
+  };
+
+  const connect = async () => {
+    try {
+      await connectSocket();
+    } catch (err) {
+      console.log("🚀 ~ file: index.jsx:25 ~ connect ~ err:", err);
+    }
+  };
+  useEffect(() => {
+    if (userData?.is_admin) {
+      getNotificationCount(
+        "admin_notification_count",
+        handleUpdateNotificationCount
+      );
+      connect();
+    }
+  }, []);
   return (
     <div>
       {" "}
@@ -29,34 +57,47 @@ const Header = () => {
                 </Nav.Link>
               </>
             )}
-            <Nav.Link onClick={() => navigate("/logout")}>Logout</Nav.Link>
           </Nav>
-          <NavDropdown
-            title={`Hi ${userData?.name}`}
-            className="ms-2 rounded border border-dark p-2"
-          >
-            <NavDropdown.Item onClick={() => navigate("/home")}>
-              <FaHome /> Home
-            </NavDropdown.Item>
+          <Nav>
             {userData?.is_admin && (
-              <>
-                <NavDropdown.Item onClick={() => navigate("/home")}>
-                  <FaHome /> Profile
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => navigate("/home")}>
-                  <FaHome /> User-list
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => navigate("/home")}>
-                  <FaHome /> Notification
-                </NavDropdown.Item>
-              </>
+              <Nav.Link onClick={() => navigate("/notification")}>
+                <div className="notify-container">
+                  <MdNotifications size={30} />
+                  {!(localStorage.getItem("count") == 0) && (
+                    <span className="notify-count">
+                      {notificationCount
+                        ? notificationCount
+                        : localStorage.getItem("count")}
+                    </span>
+                  )}
+                </div>
+              </Nav.Link>
             )}
 
-            <NavDropdown.Divider />
-            <NavDropdown.Item onClick={() => navigate("/logout")}>
-              <FaSignOutAlt /> Log Out
-            </NavDropdown.Item>
-          </NavDropdown>
+            <NavDropdown
+              title={`Hi ${userData?.name}`}
+              className="ms-2 rounded border border-dark p-2"
+            >
+              <NavDropdown.Item onClick={() => navigate("/home")}>
+                <FaHome /> Home
+              </NavDropdown.Item>
+              {userData?.is_admin && (
+                <>
+                  <NavDropdown.Item onClick={() => navigate("/home")}>
+                    <FaUser /> Profile
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => navigate("/home")}>
+                    <FaUsers /> User-list
+                  </NavDropdown.Item>
+                </>
+              )}
+
+              <NavDropdown.Divider />
+              <NavDropdown.Item onClick={() => navigate("/logout")}>
+                <FaSignOutAlt /> Log Out
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
         </Container>
       </Navbar>
     </div>

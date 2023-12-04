@@ -6,24 +6,14 @@ import { responseMessage } from "../../utils/response-message";
 import { getUsersList } from "../../services/methods";
 import { imageDownload } from "../../utils/common-function";
 
-const data = [
-  { name: "Celo", email: "celo@gmail.com", ph: "234324432342" },
-  { name: "Celo", email: "celo@gmail.com", ph: "234324432342" },
-  { name: "Celo", email: "celo@gmail.com", ph: "234324432342" },
-  { name: "Celo", email: "celo@gmail.com", ph: "234324432342" },
-  { name: "Celo", email: "celo@gmail.com", ph: "234324432342" },
-];
-
 const UserList = () => {
   const [list, setList] = useState([]);
-  console.log("🚀 ~ file: index.jsx:18 ~ UserList ~ list:", list);
 
   const getList = async () => {
     try {
       const response = await getUsersList();
       setList(response.data.response_data);
     } catch (err) {
-      console.log("🚀 ~ file: index.jsx:21 ~ getList ~ err:", err);
       responseMessage(err.data.code);
     }
   };

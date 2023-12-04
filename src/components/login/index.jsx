@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { loginSchema } from "../../utils/form-validation-schema";
 
 import "./style.css";
@@ -7,6 +7,8 @@ import Form from "react-bootstrap/Form";
 import AppPasswordInput from "../../components/app-password-input";
 import { json, useNavigate } from "react-router-dom";
 import { responseMessage } from "../../utils/response-message";
+import toast from "react-hot-toast";
+import { connectSocket } from "../../services/socket-utils";
 
 const Login = ({ api, activeTab }) => {
   const navigate = useNavigate();
@@ -18,16 +20,21 @@ const Login = ({ api, activeTab }) => {
   const handleSubmit = async (values) => {
     try {
       const response = await api(values);
-      console.log(
-        "🚀 ~ file: index.jsx:21 ~ handleSubmit ~ response:",
-        response
-      );
+
       localStorage.setItem(
         "access_token",
         response.data.response_data.access_token
       );
+      localStorage.setItem(
+        "count",
+        response.data.response_data.notificationCount
+      );
       const jsonString = JSON.stringify(response.data.response_data);
       localStorage.setItem("user_data", jsonString);
+
+      if (response.data.response_data.is_admin) {
+        await connectSocket();
+      }
 
       navigate("/home");
       responseMessage(response.data.code);
@@ -42,6 +49,10 @@ const Login = ({ api, activeTab }) => {
     validationSchema: loginSchema,
     onSubmit: handleSubmit,
   });
+
+  useEffect(() => {
+    formik.resetForm();
+  }, [activeTab]);
 
   return (
     <form onSubmit={formik.handleSubmit}>

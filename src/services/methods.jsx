@@ -32,5 +32,18 @@ export const verifyUser = () => axios.get("/user/verify-user");
 //ADMIN USER API
 export const verifyAdminUser = () => axios.get("/admin-user/verify-user");
 export const getUsersList = () => axios.get("/admin-user/user-list");
+
+//NOTIFICATION API
+export const getNotifications = () => axios.get("/notification/notifications");
+
+export const readNotification = (id) =>
+  axios.put(`/notification/read-notification/${id}`);
+
+export const clearSingleNotification = (id) =>
+  axios.put(`/notification/clear-single-notification/${id}`);
+
+export const clearNotifications = (ids) =>
+  axios.put("/notification/clear-notifications", ids);
+
 //LOGOUT API
 export const logout = () => axios.get("/logout");

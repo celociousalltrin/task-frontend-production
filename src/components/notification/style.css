@@ -1,0 +1,25 @@
+.notification_profile--img {
+  object-fit: cover;
+  object-position: center;
+  margin: 0.7rem;
+  border-radius: 50%;
+}
+
+.notify-container:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.notify-container--unread {
+  background-color: rgb(9 114 243 / 14%);
+}
+
+.notification-close__btn {
+  position: absolute;
+  top: 6%;
+  right: 0.7%;
+}
+
+.notification-close__btn:hover {
+  color: red;
+}

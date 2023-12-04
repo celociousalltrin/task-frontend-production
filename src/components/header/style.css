@@ -1,0 +1,13 @@
+.notify-container {
+  position: relative;
+}
+
+.notify-count {
+  position: absolute;
+  border-radius: 50%;
+  top: -30%;
+  background-color: rgb(180, 111, 25);
+  left: 27%;
+  padding: 0px 3px 0px 3px;
+  color: whitesmoke;
+}
